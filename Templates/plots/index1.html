@@ -1,0 +1,35 @@
+ <!DOCTYPE html>
+<html>
+<head>
+<title>Plot Analytics</title>
+</head>
+<body>
+<style type="text/css">
+    .remove-label
+	{
+    	color: #fff;
+	}
+    </style>
+
+<form type="get" action="." style="margin: 0">
+    <input  id="search_box" type="text" name="search_box"  placeholder="Search..." >
+    <button id="search_submit" type="submit" >Submit</button>
+</form>
+
+<form method="post" enctype="multipart/form-data">
+    <input type="file" class="remove-label" name="myfile" />
+    <input type="submit" name="submit" value="upload" />
+</form>
+{{filename}}
+{% load staticfiles %}
+ {% for plot,score in plots_scores %}
+	{% with "plots/"|add:plot|add:".jpg" as image_static %}
+        <li><img src="{% static image_static %}" alt="My image"/></li>
+	{% endwith %}
+	{{score}}
+ {% endfor %}
+<!img src="{% static "plots/2.jpg" %}" alt="My image"/>
+
+
+</body>
+</html> 

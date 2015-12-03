@@ -9,25 +9,30 @@
 	{
     	color: #fff;
 	}
+	ul
     </style>
-
+<style> .myList{ list-style-type: none;} </style>
 <form type="get" action="." style="margin: 0">
     <input  id="search_box" type="text" name="search_box"  placeholder="Search..." >
     <button id="search_submit" type="submit" >Submit</button>
 </form>
 
 <form method="post" enctype="multipart/form-data">
-    <input type="file" class="remove-label" name="myfile" />
+    <input type="file" name="myfile" />
+    <input type="file" name="myschema" />
     <input type="submit" name="submit" value="upload" />
 </form>
+
 {{filename}}
+
 {% load staticfiles %}
- {% for plot,score in plots_scores %}
-	{% with "plots/"|add:plot|add:".jpg" as image_static %}
-        <li><img src="{% static image_static %}" alt="My image"/></li>
+ {% for plot in plots%}
+	{% with plot|add:".png" as image_static %}
+        <ul class="myList"><li><img src="{% static image_static %}" alt="My image"/></li></ul>
 	{% endwith %}
-	{{score}}
+<br><br><br>
  {% endfor %}
+
 <!img src="{% static "plots/2.jpg" %}" alt="My image"/>
 
 

@@ -1,0 +1,7 @@
+name,type
+GAGE,num
+BAGE,num
+GP,cat
+BP,cat
+AINCOME,num
+STATUS,cat
